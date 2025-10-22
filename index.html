@@ -992,10 +992,11 @@
 
             // 運勢が悪化した場合のみ、再度引くボタンを表示する
             if (selectedFortune.rank < previousFortuneRank) {
-                spinButton.style.display = 'block';
+                spinButton.classList.remove('hidden');
+                navigatorLinkButton.classList.remove('hidden');
             } else {
-                spinButton.style.display = 'none';
-                navigatorLinkButton.classList.remove('hidden'); // リンクボタンを表示
+                spinButton.classList.add('hidden');
+                navigatorLinkButton.classList.remove('hidden');
             }
             previousFortuneRank = selectedFortune.rank; // 今回のランクを次回のために保存
             spinButton.disabled = false; // ボタンの無効化を解除
@@ -1024,7 +1025,7 @@
         window.onload = () => {
             renderFortuneTexts();
             spinButton.addEventListener('click', spinRoulette);
-            spinButton.style.display = 'block'; // 初期表示
+            spinButton.classList.remove('hidden'); // 初期表示
             spinButton.textContent = "おみくじを引く";
             
             // 初回ロード時にルーレットのスタイルを初期化（念のため）
