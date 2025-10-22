@@ -282,11 +282,11 @@
                 </div>
 
                 <!-- ボタンコンテナ -->
-                <div class="w-full md:w-2/3 mx-auto">
-                    <button id="spin-button" class="w-full text-white font-semibold rounded-lg shadow-xl whitespace-nowrap">
+                <div class="w-full md:w-2/3 mx-auto flex flex-col md:flex-row items-center gap-4">
+                    <button id="spin-button" class="w-full md:w-1/2 text-white font-semibold rounded-lg shadow-xl whitespace-nowrap">
                         おみくじを引く
                     </button>
-                    <a id="navigator-link-button" href="https://sites.google.com/view/aftereffects-ok/Home" target="_blank" rel="noopener noreferrer" class="hidden block w-full text-white font-semibold rounded-lg shadow-md whitespace-nowrap transition-colors flex items-center justify-center">
+                    <a id="navigator-link-button" href="https://sites.google.com/view/aftereffects-ok/Home" target="_blank" rel="noopener noreferrer" class="hidden block w-full md:w-1/2 text-white font-semibold rounded-lg shadow-md whitespace-nowrap transition-colors flex items-center justify-center">
                         講義Navigatorへ
                     </a>
                 </div>
@@ -982,12 +982,7 @@
             loadingMessage.style.display = 'none';
             displayResult(selectedFortune);
 
-            // 6. 結果表示エリアへ1秒後にスクロール
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            const container = document.querySelector('.omikuji-container');
-            container.scrollIntoView({ behavior: 'smooth', block: 'end' });
-
-            // --- ボタンの表示/非表示ロジック ---
+            // --- ボタンの表示/非表示ロジックを先に実行 ---
             drawCount++;
 
             // 運勢が悪化した場合のみ、再度引くボタンを表示する
@@ -1001,6 +996,11 @@
             previousFortuneRank = selectedFortune.rank; // 今回のランクを次回のために保存
             spinButton.disabled = false; // ボタンの無効化を解除
             spinButton.textContent = "おみくじを引く"; // ボタンのテキストを元に戻す
+
+            // 6. 結果表示エリアへ1秒後にスクロール
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            const container = document.querySelector('.omikuji-container');
+            container.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
 
         // --- 結果を表示する関数 ---
