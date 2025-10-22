@@ -924,6 +924,11 @@
 
         // --- ルーレットをスピンさせる関数 ---
         async function spinRoulette() {
+            // ★追加: ボタンクリック時にバイブレーション
+            if (navigator.vibrate) {
+                navigator.vibrate(50); // 50ミリ秒の振動
+            }
+
             spinButton.disabled = true;
             spinButton.textContent = "運命の回転...";
             navigatorLinkButton.classList.add('hidden'); // リンクボタンを隠す
@@ -1025,6 +1030,14 @@
         window.onload = () => {
             renderFortuneTexts();
             spinButton.addEventListener('click', spinRoulette);
+
+            // ★追加: 講義Navigatorボタンにもバイブレーションを追加
+            navigatorLinkButton.addEventListener('click', () => {
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
+            });
+
             spinButton.classList.remove('hidden'); // 初期表示
             spinButton.textContent = "おみくじを引く";
             
