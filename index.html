@@ -185,7 +185,6 @@
             position: relative; /* 疑似要素の基準点にする */
             isolation: isolate; /* z-indexのスタッキングコンテキストを新しく作る */
             border: 5px solid #5d251f;
-            background-color: var(--paper-bg);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             width: 100%;
@@ -199,6 +198,7 @@
             content: '';
             position: absolute;
             inset: 0; /* top, right, bottom, left を 0 に設定するのと同じ */
+            background-color: var(--paper-bg); /* 背景色をこちらに移動 */
             background-image: url("https://github.com/AfterEffects-OK/omikuji/blob/main/%E3%82%B3%E3%83%B3%E3%83%9D%204_00000.png?raw=true");
             background-repeat: no-repeat;
             background-position: right -135px bottom -135px;
