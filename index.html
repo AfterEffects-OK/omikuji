@@ -193,7 +193,7 @@
             margin-right: auto;
         }
 
-        /* ★追加: 透かし画像用の疑似要素 */
+        /* 透かし画像用の疑似要素 */
         #result-display::before {
             content: '';
             position: absolute;
@@ -1060,7 +1060,7 @@
                 navigator.vibrate(ROULETTE_CONFIG.VIBRATION_MS);
             }
             spinButton.disabled = true;
-            spinButton.textContent = "運命の回転...";
+            spinButton.textContent = "抽籤中...";
             navigatorLinkButton.classList.add('hidden');
             resultDisplay.classList.add('hidden');
             loadingMessage.style.display = 'block';
