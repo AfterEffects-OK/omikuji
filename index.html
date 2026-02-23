@@ -308,9 +308,11 @@
                     <button id="spin-button" class="w-64 md:w-auto text-white font-semibold rounded-lg shadow-xl whitespace-nowrap flex items-center justify-center">
                         おみくじを引く
                     </button>
+                    <!--
                     <a id="navigator-link-button" href="https://sites.google.com/view/aftereffects-ok/Home" target="_blank" rel="noopener noreferrer" class="hidden block w-64 md:w-auto text-white font-semibold rounded-lg shadow-md whitespace-nowrap transition-colors flex items-center justify-center">
                         講義Navigatorへ
                     </a>
+                    -->
                 </div>
             </div>
 
@@ -923,7 +925,7 @@
         // アプリケーション全体で利用するDOM要素をまとめて取得
         const roulette = document.getElementById('roulette');
         const spinButton = document.getElementById('spin-button');
-        const navigatorLinkButton = document.getElementById('navigator-link-button');
+        // const navigatorLinkButton = document.getElementById('navigator-link-button');
         const rouletteWrapper = document.getElementById('roulette-wrapper');
         const fortuneTextContainer = document.querySelector('.fortune-text-container');
         const resultDisplay = document.getElementById('result-display');
@@ -1069,7 +1071,7 @@
             }
             spinButton.disabled = true;
             spinButton.textContent = "抽籤中...";
-            navigatorLinkButton.classList.add('hidden');
+            // navigatorLinkButton.classList.add('hidden');
             resultDisplay.classList.add('hidden');
             loadingMessage.style.display = 'block';
             rouletteWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1087,10 +1089,10 @@
 
             if (selectedFortune.rank < state.previousFortuneRank) {
                 spinButton.classList.remove('hidden');
-                navigatorLinkButton.classList.remove('hidden');
+                // navigatorLinkButton.classList.remove('hidden');
             } else {
                 spinButton.classList.add('hidden');
-                navigatorLinkButton.classList.remove('hidden');
+                // navigatorLinkButton.classList.remove('hidden');
             }
             state.previousFortuneRank = selectedFortune.rank;
             spinButton.disabled = false;
@@ -1155,11 +1157,13 @@
 
             // 4. イベントリスナーを設定
             spinButton.addEventListener('click', spinRoulette);
+            /*
             navigatorLinkButton.addEventListener('click', () => {
                 if (navigator.vibrate) {
                     navigator.vibrate(ROULETTE_CONFIG.VIBRATION_MS);
                 }
             });
+            */
 
             // 5. 初期UI状態を設定
             spinButton.classList.remove('hidden');
